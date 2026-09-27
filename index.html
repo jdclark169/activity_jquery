@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- Joseph Clark
+ 09/27/2026-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using jQuery for Form Validation</title>
+
+    <!-- jQuery -->
+
+    <script src="./resources/jquery.min.js"></script>
+
+    <!-- Fallback -->
+
+    <script>
+    
+    if (typeof jQuery === "undefined") {
+            
+        console.log("local jQuery failed. Loading CDN version.");
+
+        document.write('<script src="https://code.jquery.com/jquery-3.7.1.min.js"><\/script>');
+    
+    } else {
+
+        console.log("local jQuery loaded successfully.");
+
+    }
+
+    </script>
+
+    <!-- jQuery Validation Plugin -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.22.1/dist/jquery.validate.min.js"></script>
+
+    <script>
+    
+    $(document).ready(function() {
+    
+        $("#summary").css("color", "green");
+
+        $("#feedback_form").validate({
+ 
+            rules: {
+  
+                name: {
+                    required: true
+                },
+   
+                email: {
+                    required: true,
+                    email: true
+                },
+   
+                message: {
+                    required: true
+                }
+            },
+
+            messages: {
+
+                name: "Enter your name",
+
+                email: {
+                    required: "Enter your email",
+                    email: "Enter a valid email address"
+                },
+
+                message: "Enter your message"
+
+            }
+        });
+    });
+
+    </script>
+
+</head>
+<body>
+
+    <h1>Common Uses of jQuery</h1>
+    
+    <p id="summary">jQuery is a JavaScript library that makes it easier to interact with webpages. 
+    You can modify CSS, handle events, and provide interactive functionality as well. 
+    jQuery can be extended with various plug-ins to add many different features. 
+    For this activity we will be using the jQuery <a href="https://cdn.jsdelivr.net/npm/jquery-validation@1.22.1/dist/">
+        Validation Plug-in
+        </a>
+    </p>
+
+    <form id="feedback_form">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <footer>
+        <p>&copy; Joseph Clark, 2026</p>
+    </footer>
+    
+</body>
+</html>
